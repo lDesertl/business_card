@@ -1,8 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/Home.scss";
 const Home = () => {
+  const [isPressed, setIsPressed] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    console.log("нажата");
+    let timer;
+    if (isPressed) {
+      setIsAnimating(true);
+      timer = setTimeout(() => {}, 2000);
+      return () => {
+        clearTimeout(timer);
+        setIsAnimating(false);
+      };
+    }
+  }, [isPressed]);
   return (
     <div className="Home">
+      <div className="ButtonBox">
+        <div
+          className={`Button ${isAnimating ? `animating` : ``}`}
+          onMouseDown={() => {
+            setIsPressed(true);
+          }}
+          onMouseUp={() => {
+            setIsPressed(false);
+          }}
+          onMouseLeave={() => {
+            setIsPressed(false);
+          }}
+        >
+          HOLD
+        </div>
+      </div>
       <div className="Landscape">
         <div className="Sky">
           <svg

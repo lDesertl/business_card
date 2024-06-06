@@ -112,4 +112,50 @@
       display: block;
     }
   }
+  .ButtonBox {
+    z-index: 7;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    color: #fff;
+    .Button {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 74px;
+      height: 35px;
+      border: dashed #fff;
+      border-radius: 50px;
+    }
+    .animating {
+      animation: borderAnimation 1s linear forwards;
+    }
+  }
+}
+@keyframes borderAnimation {
+  0% {
+    border-color: #fff;
+    border-style: dashed;
+  }
+  25% {
+    border-top: dashed #17e3d7;
+  }
+  50% {
+    border-right: dashed #17e3d7;
+  }
+  75% {
+    border-bottom: dashed #17e3d7;
+  }
+  99% {
+    border-left: dashed #17e3d7;
+  }
+  100% {
+    box-shadow: 0 0 10px 5px #fff;
+    border-style: solid;
+    border-color: #fff;
+  }
 }
