@@ -16,8 +16,6 @@ const Home = () => {
     false,
     false,
     false,
-    false,
-    false,
   ]);
   const setTransition = (index, value) => {
     setIsTransition((prevTransition) => {
@@ -227,7 +225,7 @@ const Home = () => {
               />
             </svg>
           </div>
-          <div className={`Grass ${isTransition[9] ? `Transition` : ``}`}>
+          <div className={`Grass ${isTransition[11] ? `Hidden` : ``}`}>
             <svg
               width="1920"
               height="100"
@@ -235,7 +233,7 @@ const Home = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect width="1920" height="160" fill="#06615B" />
+              <rect width="1920" height="150" fill="#06615B" />
             </svg>
           </div>
         </div>
