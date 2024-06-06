@@ -1,7 +1,17 @@
 .Home {
   width: 100vw;
   height: 100vh;
-  //   background: #000714;
+  background: #000714;
+  overflow: hidden;
+  .Hidden {
+    display: none !important;
+  }
+  .Landscape {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+  }
   .Mountains {
     margin: 0;
     padding: 0;
@@ -10,7 +20,6 @@
     display: block;
     width: 100vw;
     height: 100vh;
-
     .Mountains1 {
       width: 100vw;
       height: 100vh;
@@ -95,10 +104,25 @@
         width: 100%;
       }
     }
+    .Grass {
+      z-index: 5;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      bottom: 0;
+      svg {
+        left: 0;
+        position: absolute;
+        bottom: 0;
+        height: auto;
+        width: 100%;
+      }
+    }
   }
   .Sky {
+    overflow: hidden;
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     width: 100vw;
     height: 100vh;
     padding: 0;
@@ -130,12 +154,17 @@
       height: 35px;
       border: dashed #fff;
       border-radius: 50px;
+      user-select: none;
     }
     .animating {
       animation: borderAnimation 1s linear forwards;
     }
   }
+  .Transition {
+    animation: transition 1s ease-in forwards;
+  }
 }
+
 @keyframes borderAnimation {
   0% {
     border-color: #fff;
@@ -157,5 +186,20 @@
     box-shadow: 0 0 10px 5px #fff;
     border-style: solid;
     border-color: #fff;
+  }
+}
+@keyframes transition {
+  0% {
+    bottom: 0;
+  }
+  15% {
+    bottom: 3vh;
+  }
+  99% {
+    bottom: -100vh;
+  }
+  100% {
+    bottom: -100vh;
+    display: none;
   }
 }

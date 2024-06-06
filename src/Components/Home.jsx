@@ -3,22 +3,53 @@ import "../Styles/Home.scss";
 const Home = () => {
   const [isPressed, setIsPressed] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-
+  const [isTransition, setIsTransition] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  const setTransition = (index, value) => {
+    setIsTransition((prevTransition) => {
+      const newTransition = [...prevTransition];
+      newTransition[index] = value;
+      return newTransition;
+    });
+  };
   useEffect(() => {
-    console.log("нажата");
     let timer;
     if (isPressed) {
       setIsAnimating(true);
-      timer = setTimeout(() => {}, 2000);
+      timer = setTimeout(() => {
+        let i = 0;
+        const interval = setInterval(() => {
+          if (i >= isTransition.length) {
+            clearInterval(interval);
+          } else {
+            setTransition(i, true);
+            i++;
+          }
+        }, 50);
+      }, 2000);
       return () => {
         clearTimeout(timer);
         setIsAnimating(false);
       };
     }
-  }, [isPressed]);
+  }, [isPressed, isTransition]);
   return (
     <div className="Home">
-      <div className="ButtonBox">
+      <div className={`ButtonBox ${isTransition[0] ? `Hidden` : ``}`}>
         <div
           className={`Button ${isAnimating ? `animating` : ``}`}
           onMouseDown={() => {
@@ -34,8 +65,8 @@ const Home = () => {
           HOLD
         </div>
       </div>
-      <div className="Landscape">
-        <div className="Sky">
+      <div className={"Landscape"}>
+        <div className={`Sky ${isTransition[5] ? `Transition` : ``}`}>
           <svg
             width="100%"
             height="100%"
@@ -72,7 +103,7 @@ const Home = () => {
           </svg>
         </div>
         <div className="Mountains">
-          <div className="Mountains6">
+          <div className={`Mountains6 ${isTransition[6] ? `Transition` : ``}`}>
             <svg
               width="1920"
               height="299"
@@ -86,7 +117,7 @@ const Home = () => {
               />
             </svg>
           </div>
-          <div className="Mountains5">
+          <div className={`Mountains5 ${isTransition[5] ? `Transition` : ``}`}>
             <svg
               width="1920"
               height="384"
@@ -100,7 +131,7 @@ const Home = () => {
               />
             </svg>
           </div>
-          <div className="Mountains4">
+          <div className={`Mountains4 ${isTransition[4] ? `Transition` : ``}`}>
             <svg
               width="1921"
               height="385"
@@ -118,7 +149,7 @@ const Home = () => {
               />
             </svg>
           </div>
-          <div className="Mountains3">
+          <div className={`Mountains3 ${isTransition[3] ? `Transition` : ``}`}>
             <svg
               width="1921"
               height="511"
@@ -144,7 +175,7 @@ const Home = () => {
               />
             </svg>
           </div>
-          <div className="Mountains2">
+          <div className={`Mountains2 ${isTransition[2] ? `Transition` : ``}`}>
             <svg
               width="1916"
               height="747"
@@ -166,7 +197,7 @@ const Home = () => {
               />
             </svg>
           </div>
-          <div className="Mountains1">
+          <div className={`Mountains1 ${isTransition[1] ? `Transition` : ``}`}>
             <svg
               width="1921"
               height="483"
@@ -194,6 +225,17 @@ const Home = () => {
                 d="M1543.37 90.1669C1538.14 88.4141 1533.33 86.5409 1528.6 84.4945C1523.63 82.3371 1519.92 80.2941 1521.04 73.7581C1522.35 66.0522 1514.15 61.3076 1509.82 55.4317C1503.84 47.3295 1495.14 42.5223 1482.72 40.6794C1485.37 38.1043 1486.62 36.3466 1488.39 35.2537C1494.93 31.2301 1495.18 27.2881 1488.81 22.8971C1487.53 22.0099 1485.94 21.4626 1484.54 20.7848C1485.84 12.7896 1484.97 12.1585 1477.8 2.5C1480.4 2.84022 1483.41 4.26253 1485.56 5.0537C1489.87 7.26625 1494.17 9.51367 1498.51 11.6852C1514.99 19.9248 1528.66 30.7457 1539.84 44.3639C1544.21 49.6823 1551.07 53.4086 1557.13 58.5944C1558.43 60.2911 1559.41 61.2535 1560.38 62.216C1560.38 62.216 1560.37 62.286 1560.46 62.7173C1562.36 64.0818 1918.49 481.067 1920.3 482C1912.91 490.007 1549.3 88.5 1543.37 90.1669Z"
                 fill="#17E3D7"
               />
+            </svg>
+          </div>
+          <div className={`Grass ${isTransition[9] ? `Transition` : ``}`}>
+            <svg
+              width="1920"
+              height="100"
+              viewBox="0 0 1920 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="1920" height="160" fill="#06615B" />
             </svg>
           </div>
         </div>
