@@ -1,3 +1,6 @@
+body {
+  overflow: hidden;
+}
 .Home {
   width: 100vw;
   height: 100vh;
@@ -161,10 +164,30 @@
     }
   }
   .Transition {
-    animation: transition 1s ease-in forwards;
+    animation: transitionAnimation 1s ease-in forwards;
+  }
+  .StarsBox {
+    bottom: 40vh;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+  }
+  .StarsBoxAnimation {
+    animation: starsAnimation 1.4s ease-in forwards;
   }
 }
-
+@keyframes starsAnimation {
+  0% {
+    bottom: 100vh;
+  }
+  15% {
+    bottom: 103vh;
+  }
+  100% {
+    bottom: -100vh;
+    // display: none;
+  }
+}
 @keyframes borderAnimation {
   0% {
     border-color: #fff;
@@ -188,7 +211,7 @@
     border-color: #fff;
   }
 }
-@keyframes transition {
+@keyframes transitionAnimation {
   0% {
     bottom: 0;
   }
