@@ -23,7 +23,7 @@ const Neptune = () => {
     }
   });
 
-  return <primitive object={scene} ref={planetRef} />;
+  return <primitive object={scene} ref={planetRef} scale={0.003} />;
 };
 
 export default Neptune;

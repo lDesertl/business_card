@@ -12,7 +12,14 @@ const Sun = () => {
     }
   });
 
-  return <primitive object={scene} ref={sunRef} position={[0, 0, -15]} />;
+  return (
+    <primitive
+      object={scene}
+      ref={sunRef}
+      position={[0, 0, 0]}
+      scale={0.0003}
+    />
+  );
 };
 
 export default Sun;

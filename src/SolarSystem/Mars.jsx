@@ -5,7 +5,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 const Mars = () => {
   const { scene } = useGLTF("/Models/Mars.glb");
   const planetRef = useRef();
-  const radius = 12; // Радиус окружности
+  const radius = 2.5; // Радиус окружности
   const speed = 0.53; // Скорость вращения
 
   // Функция для вращения вокруг своей оси и перемещения по орбите
@@ -19,11 +19,11 @@ const Mars = () => {
       // Перемещение по орбите
       const x = Math.cos(time * speed) * radius;
       const y = Math.sin(time * speed) * radius;
-      planetRef.current.position.set(x, y, -30);
+      planetRef.current.position.set(x, y, 0);
     }
   });
 
-  return <primitive object={scene} ref={planetRef} />;
+  return <primitive object={scene} ref={planetRef} scale={0.0003} />;
 };
 
 export default Mars;

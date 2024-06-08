@@ -17,9 +17,8 @@ const SolarSystem = () => {
     <div className="SystemBox">
       <Canvas style={{ background: "#000714" }}>
         <Suspense fallback={null}>
-          <ambientLight intensity={4} />
+          <ambientLight intensity={6} />
           <pointLight position={[10, 10, 10]} />
-
           <Sun />
           <Mercury />
           <Venus />
