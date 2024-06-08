@@ -159,6 +159,7 @@ body {
       border-radius: 50px;
       user-select: none;
     }
+
     .animating {
       animation: borderAnimation 1s linear forwards;
     }
@@ -174,6 +175,14 @@ body {
   }
   .StarsBoxAnimation {
     animation: starsAnimation 1.4s ease-in forwards;
+  }
+  .SolarSystem {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    bottom: 0;
+    z-index: 10;
   }
 }
 @keyframes starsAnimation {

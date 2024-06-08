@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../Styles/Home.scss";
 import Stars from "./Stars";
+import SolarSystem from "../SolarSystem/SolarSystem";
 const Home = () => {
   const [isPressed, setIsPressed] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -48,9 +49,16 @@ const Home = () => {
   }, [isPressed, isTransition]);
   return (
     <div className="Home">
-      <div className={`StarsBox ${isTransition[5] ? `StarsBoxAnimation` : ``}`}>
-        <Stars />
+      <div className="SolarSystem">
+        <SolarSystem />
       </div>
+      {isTransition[5] ? (
+        <div className="StarsBox StarsBoxAnimation">
+          <Stars />
+        </div>
+      ) : (
+        ``
+      )}
       <div className={`ButtonBox ${isTransition[0] ? `Hidden` : ``}`}>
         <div
           className={`Button ${isAnimating ? `animating` : ``}`}
