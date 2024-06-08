@@ -49,7 +49,9 @@ const Home = () => {
   }, [isPressed, isTransition]);
   return (
     <div className="Home">
-      <div className="SolarSystem">
+      <div
+        className={`SolarSystem ${isTransition[5] ? `SolarSystemActive` : ``}`}
+      >
         <SolarSystem />
       </div>
       {isTransition[5] ? (

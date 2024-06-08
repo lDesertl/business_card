@@ -174,7 +174,7 @@ body {
     width: 100vw;
   }
   .StarsBoxAnimation {
-    animation: starsAnimation 1.4s ease-in forwards;
+    animation: starsAnimation 2s ease-in forwards;
   }
   .SolarSystem {
     position: absolute;
@@ -183,6 +183,20 @@ body {
     background: #fff;
     bottom: 0;
     z-index: 10;
+  }
+  .SolarSystemActive {
+    animation: solarSystemAnimation 2s ease-in forwards;
+  }
+}
+@keyframes solarSystemAnimation {
+  0% {
+    bottom: 200vh;
+  }
+  15% {
+    bottom: 203vh;
+  }
+  100% {
+    bottom: 0;
   }
 }
 @keyframes starsAnimation {
