@@ -9,21 +9,38 @@ body {
   height: 100vh;
   background: #000714;
   overflow: hidden;
-  .Loader {
+  .LoaderBox {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     position: absolute;
+    left: 0;
+    bottom: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 100;
-    .LoaderRing {
+    .Text {
       position: absolute;
-      border-radius: 50%;
-      width: 15vw;
-      height: 15vw;
-      border-top: #fff solid;
-      animation: loaderRingAnimation 1s ease-in-out infinite;
+      top: 20vh;
+      color: #fff;
+      overflow-wrap: break-word;
+      z-index: 9;
+    }
+    .Loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      z-index: 8;
+      .LoaderRing {
+        position: absolute;
+        border-radius: 50%;
+        width: 15vw;
+        height: 15vw;
+        border-top: #fff solid;
+        animation: loaderRingAnimation 1s ease-in-out infinite;
+      }
     }
   }
   .LoaderAnimation {
