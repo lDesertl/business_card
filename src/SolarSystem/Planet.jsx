@@ -11,6 +11,7 @@ const Planet = ({
   timeSpeed,
   scale,
   setSelectedPlanet,
+  setCamControls,
   moon1Path,
   moon1OrbitRadius,
   moon1OrbitSpeed,
@@ -74,14 +75,18 @@ const Planet = ({
     }
   });
 
+  const handleClick = () => {
+    if (setSelectedPlanet) {
+      setSelectedPlanet(planetRef.current);
+      setCamControls(false);
+    }
+  };
+
   return (
     <>
-      <primitive
-        object={scene}
-        ref={planetRef}
-        scale={scale}
-        // onClick={() => setSelectedPlanet(planetRef)}
-      />
+      <group ref={planetRef} onClick={handleClick}>
+        <primitive object={scene} scale={scale} />
+      </group>
       <mesh>
         <torusGeometry args={[radius, 0.01, 10, 100]} />
       </mesh>

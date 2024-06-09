@@ -5,11 +5,11 @@ import * as THREE from "three";
 
 extend({ OrbitControls });
 
-const Controls = ({ selectedPlanet }) => {
+const PlanetControls = ({ selectedPlanet }) => {
   const { camera, gl } = useThree();
   const controlsRef = useRef();
-  const rotateSpeed = 0.5;
-  const zoomSpeed = 5;
+  const rotateSpeed = 0.05;
+  const zoomSpeed = 0.5;
   const mouseButtons = { RIGHT: 0, MIDDLE: 1, LEFT: 0 };
   const [distance, setDistance] = useState(4);
 
@@ -57,10 +57,12 @@ const Controls = ({ selectedPlanet }) => {
       ref={controlsRef}
       args={[camera, gl.domElement]}
       mouseButtons={mouseButtons}
+      enableRotate={false}
+      enableZoom={false}
       rotateSpeed={rotateSpeed}
       zoomSpeed={zoomSpeed}
     />
   );
 };
 
-export default Controls;
+export default PlanetControls;

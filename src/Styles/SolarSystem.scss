@@ -1,6 +1,30 @@
 .SystemBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100vw;
   position: absolute;
   bottom: 0;
+  .SelectSun {
+    position: absolute;
+    z-index: 2;
+    width: 100px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    top: 30px;
+  }
+  .Start {
+    position: absolute;
+    z-index: 2;
+
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
 }
