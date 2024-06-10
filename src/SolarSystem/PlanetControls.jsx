@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { extend, useThree, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as THREE from "three";
-
+import { useGesture } from "react-use-gesture";
 extend({ OrbitControls });
 
 const PlanetControls = ({ selectedPlanet }) => {
@@ -10,7 +10,7 @@ const PlanetControls = ({ selectedPlanet }) => {
   const controlsRef = useRef();
   const rotateSpeed = 0.05;
   const zoomSpeed = 0.5;
-  const mouseButtons = { RIGHT: 0, MIDDLE: 1, LEFT: 0 };
+  const mouseButtons = { RIGHT: 2, MIDDLE: 1, LEFT: 0 };
   const [distance, setDistance] = useState(4);
 
   useEffect(() => {
@@ -26,6 +26,20 @@ const PlanetControls = ({ selectedPlanet }) => {
       gl.domElement.removeEventListener("wheel", handleWheel);
     };
   }, [gl.domElement]);
+
+  useGesture(
+    {
+      onPinch: ({ delta }) => {
+        setDistance((prevDistance) => {
+          const newDistance = prevDistance + delta[0] * zoomSpeed;
+          return Math.max(1, Math.min(100, newDistance)); // ограничение изменения z-позиции
+        });
+      },
+    },
+    {
+      domTarget: gl.domElement,
+    }
+  );
 
   useEffect(() => {
     controlsRef.current.update();
@@ -59,8 +73,10 @@ const PlanetControls = ({ selectedPlanet }) => {
       mouseButtons={mouseButtons}
       enableRotate={false}
       enableZoom={false}
+      ena
       rotateSpeed={rotateSpeed}
       zoomSpeed={zoomSpeed}
+      enablePan={false}
     />
   );
 };
