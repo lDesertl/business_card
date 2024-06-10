@@ -31,7 +31,7 @@ const PlanetControls = ({ selectedPlanet }) => {
     {
       onPinch: ({ delta }) => {
         setDistance((prevDistance) => {
-          const newDistance = prevDistance + delta[0] * zoomSpeed;
+          const newDistance = prevDistance + delta[0] * 0.02 * -1;
           return Math.max(1, Math.min(100, newDistance)); // ограничение изменения z-позиции
         });
       },

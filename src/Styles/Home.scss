@@ -26,18 +26,32 @@ body {
     .Loader {
       display: flex;
       align-items: center;
+      position: absolute;
+
       justify-content: center;
       position: absolute;
       width: 100vw;
       height: 100vh;
       z-index: 8;
       .LoaderRing {
+        min-width: 200px;
+        min-height: 200px;
         position: absolute;
         border-radius: 50%;
         width: 15vw;
         height: 15vw;
         border-top: #fff solid;
         animation: loaderRingAnimation 1s ease-in-out infinite;
+      }
+      .LoaderRing::after {
+        width: 19.2%;
+        height: 19.2%;
+        border-radius: 50%;
+        background: #fff;
+        content: "";
+        position: absolute;
+        transform: translate(465%, 160%);
+        box-shadow: 0 0 60px #ffffff;
       }
     }
   }
