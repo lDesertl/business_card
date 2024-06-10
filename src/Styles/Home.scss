@@ -14,8 +14,6 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    left: 0;
-    bottom: 0;
     width: 100vw;
     height: 100vh;
     .Text {
@@ -46,12 +44,13 @@ body {
   .LoaderAnimation {
     animation: loaderAnimation 1s ease-in forwards;
   }
+  .LoaderBoxAnimation {
+    animation: loaderBoxAnimation 1s linear forwards;
+  }
   .Hidden {
     display: none !important;
   }
-  .LandscapeAnimation {
-    animation: landscapeAnimation 2s linear forwards;
-  }
+
   .Landscape {
     overflow: hidden;
     width: 100vw;
@@ -231,6 +230,12 @@ body {
   .SolarSystemActive {
     animation: solarSystemAnimation 4s linear forwards;
   }
+  .MountainsAnimation {
+    animation: mountainsAnimation 1s linear forwards;
+  }
+  .LandscapeAnimation {
+    animation: landscapeAnimation 2s linear forwards;
+  }
 }
 @keyframes solarSystemAnimation {
   0% {
@@ -307,7 +312,22 @@ body {
     display: none;
   }
 }
+@keyframes loaderBoxAnimation {
+  0% {
+  }
+  100% {
+    display: none;
+  }
+}
 @keyframes landscapeAnimation {
+  0% {
+  }
+
+  100% {
+    display: none;
+  }
+}
+@keyframes mountainsAnimation {
   0% {
   }
   100% {

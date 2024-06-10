@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "../Styles/Home.scss";
 import Stars from "./Stars";
 import SolarSystem from "../SolarSystem/SolarSystem";
@@ -48,17 +48,31 @@ const Home = () => {
     }
   }, [isPressed, isTransition]);
   const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 20000);
-  // }, []);
+  const buttonRef = useRef(null);
+
+  const handleMove = (event) => {
+    if (buttonRef.current) {
+      const { clientX, clientY } = event.touches ? event.touches[0] : event;
+      const { left, top, right, bottom } =
+        buttonRef.current.getBoundingClientRect();
+      if (
+        clientX < left ||
+        clientX > right ||
+        clientY < top ||
+        clientY > bottom
+      ) {
+        setIsPressed(false);
+      }
+    }
+  };
 
   return (
     <div className="Home">
-      <div className={`LoaderBox  ${!loading ? `LoaderAnimation` : ``}`}>
-        <div className="Text">The loading may take some time, don't worry.</div>
-        <div className={`Loader`}>
+      <div className={`LoaderBox ${!loading ? `LoaderBoxAnimation` : ``}`}>
+        <div className={`Text ${!loading ? `Hidden` : ``}`}>
+          The loading may take some time, don't worry.
+        </div>
+        <div className={`Loader ${!loading ? `LoaderAnimation` : ``}`}>
           {loading ? <div className="LoaderRing"></div> : ``}
           <svg
             width="100%"
@@ -777,6 +791,7 @@ const Home = () => {
         ) : (
           <div
             className={`Button ${isAnimating ? `animating` : ``}`}
+            ref={buttonRef}
             onMouseDown={() => {
               setIsPressed(true);
             }}
@@ -786,6 +801,13 @@ const Home = () => {
             onMouseLeave={() => {
               setIsPressed(false);
             }}
+            onTouchStart={() => {
+              setIsPressed(true);
+            }}
+            onTouchEnd={() => {
+              setIsPressed(false);
+            }}
+            onTouchMove={handleMove}
           >
             HOLD
           </div>
@@ -830,7 +852,9 @@ const Home = () => {
             </defs>
           </svg>
         </div>
-        <div className="Mountains">
+        <div
+          className={`Mountains ${isTransition[6] ? `MountainsAnimation` : ``}`}
+        >
           <div className={`Mountains6 ${isTransition[6] ? `Transition` : ``}`}>
             <svg
               width="1920"
